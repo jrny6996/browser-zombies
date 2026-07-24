@@ -1,6 +1,9 @@
 #include <iostream>
 #include <cassert>
 #include "raylib.h"
+#define RAYGUI_IMPLEMENTATION
+#include "raygui.h"
+
 #if defined(PLATFORM_WEB)
 #include <emscripten/emscripten.h>
 #endif
@@ -17,7 +20,7 @@ void UpdateDrawFrame(void)
     BeginDrawing();
 
     ClearBackground(RAYWHITE);
-    DrawText(info, 190, 200, 20, LIGHTGRAY);
+    DrawText(info, 0, 0, 20, LIGHTGRAY);
 
     EndDrawing();
 }

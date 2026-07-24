@@ -4,3 +4,6 @@
 build/*
 
 vendor/*
+node_modules/
+**/raw/*
+**/dist/**/*
