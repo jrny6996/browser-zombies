@@ -1,5 +1,10 @@
 #pragma once
+#include <iostream>
+
+#if defined(PLATFORM_WEB)
+
 #include "IAssetStorage.hpp"
+
 #include <emscripten/emscripten.h>
 
 class IDBAssetStorage : public IAssetStorage
@@ -13,8 +18,11 @@ public:
         FS.mkdir(base_path.c_str());
         FS.mount(FS.fileSfilesystems.IDBFS, {}, base_path);
     }
-    virtual bool store_asset(std::ifstream file_stream, std::string storage_path)
+    virtual bool store_asset(std::ifstream &file_stream, std::string storage_path)
     {
         return true;
     }
 };
+#else
+#error "IDBAssetStorage is only available on PLATFORM_WEB"
+#endif
